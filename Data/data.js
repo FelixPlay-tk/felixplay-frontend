@@ -1,0 +1,47 @@
+export const NavData = [
+    {
+        title: "Movies",
+        link: "/movies",
+        childrens: [
+            { title: "All", link: "/movies" },
+            { title: "Bengali", link: "/movies/bengali" },
+            { title: "Hindi", link: "/movies/hindi" },
+            { title: "English", link: "/movies/english" },
+            { title: "Comedy", link: "/movies/comedy" },
+            { title: "Drama", link: "/movies/darama" },
+            { title: "Family", link: "/movies/family" },
+            { title: "Crime", link: "/movies/crime" },
+            { title: "Thrller", link: "/movies/thriler" },
+            { title: "Action", link: "/movies/action" },
+            { title: "Romance", link: "/movies/romance" },
+            { title: "Horror", link: "/movies/horror" },
+        ],
+    },
+    {
+        title: "Shows",
+        link: "/shows",
+        childrens: [
+            { title: "All", link: "/shows" },
+            { title: "Bengali", link: "/shows/bengali" },
+            { title: "Hindi", link: "/shows/hindi" },
+            { title: "English", link: "/shows/english" },
+            { title: "Comedy", link: "/shows/comedy" },
+            { title: "Drama", link: "/shows/darama" },
+            { title: "Family", link: "/shows/family" },
+            { title: "Crime", link: "/shows/crime" },
+            { title: "Thrller", link: "/shows/thriler" },
+            { title: "Action", link: "/shows/action" },
+            { title: "Romance", link: "/shows/romance" },
+            { title: "Horror", link: "/shows/horror" },
+        ],
+    },
+    {
+        title: "Animes",
+        link: "/animes",
+        childrens: [
+            { title: "All", link: "/animes" },
+            { title: "Movies", link: "/animes/movies" },
+            { title: "Shows", link: "/animes/shows" },
+        ],
+    },
+];
