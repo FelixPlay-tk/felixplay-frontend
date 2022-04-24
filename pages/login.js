@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -5,6 +6,8 @@ import validator from "validator";
 import Input from "../components/Form/Input";
 import PasswordInput from "../components/Form/PasswordInput";
 import SubmitButton from "../components/Form/SubmitButton";
+import { useAuthCtx } from "../context/authContext";
+import { useRouter } from "next/router";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -14,6 +17,9 @@ const Login = () => {
     const [passwordError, setPasswordError] = useState(null);
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const { login } = useAuthCtx();
+    const router = useRouter();
 
     const emailInputHandler = (e) => {
         if (emailError) setEmailError(null);
@@ -55,19 +61,30 @@ const Login = () => {
 
         try {
             setIsLoading(true);
-            setTimeout(() => {
-                setIsLoading(false);
-                return;
-            }, 1000);
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+                {
+                    email: email,
+                    password: password,
+                }
+            );
+            setIsLoading(false);
+
+            login(response.data.JWT_TOKEN);
+            router.push("/");
         } catch (error) {
             setIsLoading(false);
-            toast.error("Something went wrong");
+            if (error.response) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error(error.message);
+            }
         }
     };
 
     return (
         <form
-            className="max-w-sm w-9/12 mx-auto pt-[10vh] lg:pt-[15vh]"
+            className="max-w-sm w-9/12 mx-auto pt-[5vh] lg:pt-[15vh]"
             onSubmit={signInHandler}
         >
             <div className="w-2/4 mb-5 mx-auto">

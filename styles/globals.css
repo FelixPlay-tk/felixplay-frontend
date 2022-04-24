@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply selection:bg-pink-500 selection:text-white;
+    }
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
@@ -22,5 +28,5 @@ body {
 }
 
 .body-minimum-height {
-    min-height: calc(100vh - 224px - 80px);
+    min-height: calc(100vh - 5rem - 14rem);
 }

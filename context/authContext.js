@@ -56,7 +56,7 @@ export default function AuthProvider({ children }) {
         window.localStorage.removeItem("authToken");
         setUser({
             isLoggedIn: false,
-            authLoading: true,
+            authLoading: false,
             fullName: null,
             email: null,
             authToken: null,
