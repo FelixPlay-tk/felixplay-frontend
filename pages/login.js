@@ -1,7 +1,7 @@
 import Head from "next/head";
 import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import validator from "validator";
 import Input from "../components/Form/Input";
@@ -19,8 +19,14 @@ const Login = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const { login } = useAuthCtx();
+    const { login, isLoggedIn } = useAuthCtx();
     const router = useRouter();
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            router.push("/");
+        }
+    }, [isLoggedIn, router]);
 
     const emailInputHandler = (e) => {
         if (emailError) setEmailError(null);
