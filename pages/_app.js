@@ -3,6 +3,7 @@ import NProgress from "nprogress";
 import Layout from "../components/Hoc/Layout";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
+import AuthProvider from "../context/authContext";
 
 NProgress.configure({ showSpinner: false });
 
@@ -19,9 +20,11 @@ Router.events.on("routeChangeError", () => {
 
 function MyApp({ Component, pageProps }) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <AuthProvider>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </AuthProvider>
     );
 }
 
