@@ -11,15 +11,15 @@ import { useAuthCtx } from "../context/authContext";
 import { useRouter } from "next/router";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("rs.2001.saha@gmail.com");
+    const [password, setPassword] = useState("123456");
 
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const { login, isLoggedIn } = useAuthCtx();
+    const { login, isLoggedIn, authLoading } = useAuthCtx();
     const router = useRouter();
 
     useEffect(() => {

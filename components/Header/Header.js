@@ -80,22 +80,24 @@ const Header = () => {
 
                         <ul
                             tabIndex="0"
-                            className="menu dropdown-content w-40 shadow rounded-md"
+                            className="menu dropdown-content w-40 "
                         >
-                            <Link href="/myaccount">
-                                <a className="bg-gray-900 px-4 py-2 hover:bg-gray-800 outline-none">
-                                    <AiOutlineSetting className="inline mr-3" />
-                                    Account
-                                </a>
-                            </Link>
+                            <div className="w-full flex flex-col overflow-hidden rounded-lg mt-2">
+                                <Link href="/myaccount">
+                                    <a className="bg-gray-900 hover:bg-gradient-to-r from-pink-600 to-purple-600 px-4 py-3 outline-none">
+                                        <AiOutlineSetting className="inline mr-3" />
+                                        Account
+                                    </a>
+                                </Link>
 
-                            <button
-                                className="bg-gray-900 px-4 py-2  hover:bg-gray-800 text-left outline-none"
-                                onClick={logout}
-                            >
-                                <FaSignOutAlt className="inline mr-3" />
-                                Log Out
-                            </button>
+                                <button
+                                    className="px-4 py-3 text-left outline-none bg-gray-900 hover:bg-gradient-to-r from-pink-600 to-purple-600"
+                                    onClick={logout}
+                                >
+                                    <FaSignOutAlt className="inline mr-3" />
+                                    Log Out
+                                </button>
+                            </div>
                         </ul>
                     </div>
                 )}

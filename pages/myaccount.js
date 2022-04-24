@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthCtx } from "../context/authContext";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import WithAuth from "../components/Hoc/WithAuth";
+import ChangePassword from "../components/Form/ChangePassword";
 
 const MyAccount = () => {
     const { fullName, email, logout } = useAuthCtx();
@@ -32,10 +33,8 @@ const MyAccount = () => {
                     </div>
 
                     <div className="mt-8 flex flex-col w-full">
-                        <button className="mt-2 bg-gray-900 w-full h-16 px-6 rounded-lg text-left flex items-center justify-between">
-                            <span>Change Password</span>
-                            <ChevronRightIcon className="h-5" />
-                        </button>
+                        <ChangePassword />
+
                         <button
                             className="mt-2 bg-gray-900 w-full h-16 px-6 rounded-lg text-left flex items-center justify-between"
                             onClick={logout}
