@@ -1,3 +1,4 @@
+import Head from "next/head";
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
@@ -83,55 +84,66 @@ const Login = () => {
     };
 
     return (
-        <form
-            className="max-w-sm w-9/12 mx-auto pt-[5vh] lg:pt-[15vh]"
-            onSubmit={signInHandler}
-        >
-            <div className="w-2/4 mb-5 mx-auto">
-                <h1 className="text-white font-bold text-xl tracking-wider text-center">
-                    Log In
-                </h1>
-                <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600" />
-            </div>
+        <>
+            <Head>
+                <title>Login - FelixPlay</title>
+                <link rel="icon" href="/favicon.png" />
+            </Head>
 
-            <div className="w-full flex flex-col justify-center items-center space-y-4">
-                <Input
-                    type="email"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={emailInputHandler}
-                    error={emailError}
-                />
+            <form
+                className="max-w-sm w-9/12 mx-auto pt-[5vh] lg:pt-[15vh]"
+                onSubmit={signInHandler}
+            >
+                <div className="w-2/4 mb-5 mx-auto">
+                    <h1 className="text-white font-bold text-xl tracking-wider text-center">
+                        Log In
+                    </h1>
+                    <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600" />
+                </div>
 
-                <PasswordInput
-                    placeholder="Password"
-                    value={password}
-                    onChange={passwordInputHandler}
-                    error={passwordError}
-                />
-            </div>
+                <div className="w-full flex flex-col justify-center items-center space-y-4">
+                    <Input
+                        type="email"
+                        placeholder="Email Address"
+                        value={email}
+                        onChange={emailInputHandler}
+                        error={emailError}
+                    />
 
-            <div className="w-full mt-7">
-                <SubmitButton type="submit" text="Log In" loading={isLoading} />
-            </div>
+                    <PasswordInput
+                        placeholder="Password"
+                        value={password}
+                        onChange={passwordInputHandler}
+                        error={passwordError}
+                    />
+                </div>
 
-            <div className="w-full text-center text-xs lg:text-base mt-2">
-                <Link href="/forgotpassword">
-                    <a className="text-purple-500 ml-1 underline">
-                        Forgot Password?
-                    </a>
-                </Link>
-            </div>
+                <div className="w-full mt-7">
+                    <SubmitButton
+                        type="submit"
+                        text="Log In"
+                        loading={isLoading}
+                    />
+                </div>
 
-            <div className="text-xs mt-5 px-2 lg:text-sm text-gray-400 text-center">
-                Don&apos;t have an Account ?
-                <Link href="/signup">
-                    <a className="text-purple-500 ml-1 underline">
-                        Register Here
-                    </a>
-                </Link>
-            </div>
-        </form>
+                <div className="w-full text-center text-xs lg:text-base mt-2">
+                    <Link href="/forgotpassword">
+                        <a className="text-purple-500 ml-1 underline">
+                            Forgot Password?
+                        </a>
+                    </Link>
+                </div>
+
+                <div className="text-xs mt-5 px-2 lg:text-sm text-gray-400 text-center">
+                    Don&apos;t have an Account ?
+                    <Link href="/signup">
+                        <a className="text-purple-500 ml-1 underline">
+                            Register Here
+                        </a>
+                    </Link>
+                </div>
+            </form>
+        </>
     );
 };
 

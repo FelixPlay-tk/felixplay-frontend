@@ -1,8 +1,13 @@
-import React from "react";
+import Head from "next/head";
 
 const Dmca = () => {
     return (
         <div className="max-w-7xl w-9/12 mx-auto py-8 lg:py-16">
+            <Head>
+                <title>DMCA Policy - FelixPlay</title>
+                <link rel="icon" href="/favicon.png" />
+            </Head>
+
             <div className="mb-5 mx-auto flex flex-col items-center justify-center">
                 <h1 className="text-white font-bold text-xl tracking-wider text-center">
                     DMCA Policy

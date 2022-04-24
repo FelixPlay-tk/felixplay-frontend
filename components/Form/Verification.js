@@ -67,16 +67,16 @@ const Verification = ({ email }) => {
 
     if (verified) {
         return (
-            <section className="max-w-sm w-9/12 mx-auto pt-36">
-                <div className="w-2/4 mx-auto mb-[3vh]">
+            <section className="max-w-sm w-9/12 mx-auto pt-36 flex flex-col items-center justify-center">
+                <div className="mb-5 mx-auto inline-block">
                     <h1 className="text-white font-bold text-xl tracking-wider text-center">
-                        Enter OTP
+                        Verification Successful
                     </h1>
-                    <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600" />
+                    <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600 scale-x-125" />
                 </div>
 
-                <div className="w-full flex flex-col justify-center items-center">
-                    <div className="bg-green-500 bg-opacity-10 border border-green-800 px-4 py-4 text-sm sm:text-sm text-green-500 flex items-center">
+                <div className="w-full flex flex-col justify-center items-center ">
+                    <div className="bg-green-500 bg-opacity-10 border border-green-800 px-4 py-4 text-sm sm:text-sm text-green-500 flex items-center rounded-lg">
                         <CheckCircleIcon className="h-12 mr-3" />
 
                         <div>

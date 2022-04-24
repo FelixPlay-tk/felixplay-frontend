@@ -1,3 +1,5 @@
+import Head from "next/head";
+import { CheckCircleIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import { useState } from "react";
 import { isEmail } from "validator";
@@ -39,13 +41,18 @@ const Forgotpassword = () => {
     return (
         <form
             onSubmit={submitHandler}
-            className="max-w-sm w-9/12 mx-auto pt-[5vh] lg:pt-[15vh]"
+            className="max-w-sm w-9/12 mx-auto pt-[5vh] lg:pt-[15vh] flex flex-col items-center justify-center "
         >
-            <div className="w-2/4 mb-5 mx-auto">
+            <Head>
+                <title>Forget Password - FelixPlay</title>
+                <link rel="icon" href="/favicon.png" />
+            </Head>
+
+            <div className="mb-5 mx-auto inline-block">
                 <h1 className="text-white font-bold text-xl tracking-wider text-center">
                     Forgot Password
                 </h1>
-                <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600" />
+                <div className="w-full h-1 rounded-full mt-2 bg-gradient-to-r from-pink-600 to-purple-600 scale-x-125" />
             </div>
 
             <div className="w-full flex flex-col justify-center items-center space-y-4">
@@ -56,8 +63,16 @@ const Forgotpassword = () => {
                     onChange={emailChangeHandler}
                     error={error}
                 />
+
                 <SubmitButton loading={isLoading} text="Submit" type="submit" />
             </div>
+
+            {success && (
+                <div className="py-2 rounded-lg text-sm sm:text-sm text-green-500 flex items-center w-full">
+                    <CheckCircleIcon className="h-6 mr-1" />
+                    <p>Check your email to reset your password!</p>
+                </div>
+            )}
         </form>
     );
 };
