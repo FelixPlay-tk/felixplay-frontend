@@ -1,4 +1,5 @@
 import { Toaster } from "react-hot-toast";
+import Footer from "../Footer";
 import Header from "../Header/Header";
 
 function Layout({ children }) {
@@ -7,7 +8,8 @@ function Layout({ children }) {
             <Toaster />
 
             <Header />
-            <main>{children}</main>
+            <main className="body-minimum-height">{children}</main>
+            <Footer />
         </>
     );
 }
