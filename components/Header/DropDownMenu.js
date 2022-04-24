@@ -2,14 +2,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-const DropDownMenu = ({ href, name, children }) => {
+const DropDownMenu = ({ link, name, children }) => {
     const [dropDownOpen, setDropDownOpen] = useState(false);
     return (
         <div
             onMouseEnter={() => setDropDownOpen(true)}
             onMouseLeave={() => setDropDownOpen(false)}
         >
-            <Link href={href}>{name}</Link>
+            <Link href={link}>{name}</Link>
             <AnimatePresence>
                 {dropDownOpen && (
                     <motion.div

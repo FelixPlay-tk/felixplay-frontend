@@ -35,11 +35,11 @@ const Header = () => {
                 {NavData?.map((item, index) => (
                     <DropDownMenu
                         name={item.title}
-                        href={item.title}
+                        link={item.link}
                         key={index}
                     >
                         {item?.childrens.map((child, i) => (
-                            <Link href={child.link} key={i}>
+                            <Link href={child.link} key={i} passHref>
                                 <a className="block w-full py-1.5 pl-3 text-white font-normal tracking-normal bg-gray-900 hover:bg-gradient-to-r from-pink-600 to-purple-600 transition-all duration-150">
                                     {child.title}
                                 </a>
