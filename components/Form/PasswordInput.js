@@ -11,8 +11,8 @@ const PasswordInput = ({ placeholder, value, onChange, error }) => {
                 <input
                     autoComplete="off"
                     type={!showPassword ? "password" : "text"}
-                    className={`w-full bg-transparent focus:border-gray-300 transition border-b outline-none py-2 placeholder-gray-500 pr-10 pl-3
-                        ${error ? "border-red-500" : "border-gray-600"}`}
+                    className={`w-full px-3 py-2 border-b focus:border-purple-500 outline-none placeholder-gray-500 bg-transparent transition
+                        ${error ? "border-red-600" : "border-gray-600"}`}
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
