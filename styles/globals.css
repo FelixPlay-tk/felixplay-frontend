@@ -8,6 +8,12 @@
     }
 }
 
+@layer components {
+    .sidebar-nav {
+        @apply text-white cursor-pointer h-12 px-5 flex items-center border-b border-gray-800 bg-transparent;
+    }
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;

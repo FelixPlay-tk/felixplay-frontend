@@ -7,25 +7,18 @@ import {
     AiOutlineSearch,
     AiOutlineSetting,
 } from "react-icons/ai";
-import { RiHeartAddFill } from "react-icons/ri";
 import { FaSignOutAlt } from "react-icons/fa";
-
 import DropDownMenu from "./DropDownMenu";
 import { NavData } from "../../Data/data";
 import { useAuthCtx } from "../../context/authContext";
-import { MenuIcon } from "@heroicons/react/solid";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Header = () => {
     const { isLoggedIn, authLoading, logout } = useAuthCtx();
 
     return (
         <header className="sticky top-0 h-20 w-full flex items-center  px-3 lg:px-9 bg-black text-white z-10">
-            <div className="cursor-pointer lg:hidden mr-2">
-                <MenuIcon
-                    className="h-6"
-                    onClick={() => setSidebarVisibility(true)}
-                />
-            </div>
+            <Sidebar />
             <span className="select-none cursor-pointer h-8 lg:h-10 flex-1 lg:flex-none">
                 <Link href="/" passHref>
                     <img
