@@ -1,18 +1,67 @@
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import Modal from "../Hoc/Modal";
 import PasswordInput from "./PasswordInput";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useAuthCtx } from "../../context/authContext";
 
 const ChangePassword = ({}) => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [oldpassword, setOldpassword] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const { authToken } = useAuthCtx();
 
     const closeModdal = () => setModalOpen(false);
+
     const submitHandler = (e) => {
         e.preventDefault();
+        if (loading) return;
+        toast.dismiss();
+
+        if (!oldPassword || !password || !confirmPassword)
+            return toast.error("All fields are required!");
+        if (password.length < 6)
+            return toast.error("Password must be 6 characters long!");
+        if (password !== confirmPassword)
+            return toast.error("Passwords do not match!");
+
+        setLoading(true);
+
+        axios
+            .post(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/changepassword`,
+                {
+                    oldPassword: oldPassword,
+                    newPassword: password,
+                    confirmPassword: confirmPassword,
+                },
+                {
+                    headers: {
+                        Authorization: "Bearer " + authToken,
+                    },
+                }
+            )
+            .then((response) => {
+                setLoading(false);
+                toast.success(response.data.message);
+                setModalOpen(false);
+
+                setOldPassword("");
+                setPassword("");
+                setConfirmPassword("");
+            })
+            .catch((error) => {
+                setLoading(false);
+                if (error.response)
+                    return toast.error(error.response.data.message);
+
+                return toast.error("something went wrong");
+            });
     };
 
     return (
@@ -30,7 +79,11 @@ const ChangePassword = ({}) => {
             <AnimatePresence>
                 {modalOpen && (
                     <Modal>
-                        <form
+                        <motion.form
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 1 }}
+                            exit={{ opacity: 0, y: 50 }}
+                            transition={{ duration: 0.2 }}
                             className="bg-gray-900 mt-[-10vh] w-[90%] max-w-lg flex flex-col justify-center items-center p-10 lg:p-12 rounded-2xl border border-pink-600"
                             onSubmit={submitHandler}
                         >
@@ -44,9 +97,9 @@ const ChangePassword = ({}) => {
                             <div className="space-y-2 w-full">
                                 <PasswordInput
                                     placeholder="Old Password"
-                                    value={oldpassword}
+                                    value={oldPassword}
                                     onChange={(e) => {
-                                        setOldpassword(e.target.value);
+                                        setOldPassword(e.target.value);
                                     }}
                                 />
                                 <PasswordInput
@@ -81,7 +134,7 @@ const ChangePassword = ({}) => {
                                     Cancel
                                 </button>
                             </div>
-                        </form>
+                        </motion.form>
                     </Modal>
                 )}
             </AnimatePresence>
