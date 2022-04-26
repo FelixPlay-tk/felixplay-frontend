@@ -6,6 +6,7 @@ import PasswordInput from "./PasswordInput";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuthCtx } from "../../context/authContext";
+import Spinner from "../UI/Spinner";
 
 const ChangePassword = ({}) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -121,8 +122,12 @@ const ChangePassword = ({}) => {
                             <div className="mt-8 w-full grid lg:grid-cols-2 gap-4">
                                 <button
                                     type="submit"
-                                    className="w-full h-12 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full"
+                                    disabled={loading}
+                                    className="w-full h-12 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full flex items-center justify-center gap-2"
                                 >
+                                    {loading && (
+                                        <Spinner className="animate-spin h-5 w-5 text-white" />
+                                    )}
                                     Update
                                 </button>
 
