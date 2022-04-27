@@ -21,7 +21,7 @@ function Modal({ children, className }) {
                     // scale: 0,
                 }}
                 transition={{ type: "just" }}
-                className="fixed top-0 bottom-0 left-0 w-full bg-black bg-opacity-75  z-50 overflow-y-auto flex justify-center  items-center"
+                className="fixed top-0 bottom-0 left-0 w-full bg-black bg-opacity-75  z-50 overflow-y-auto flex justify-center  items-center backdrop-blur-sm"
             >
                 {children}
             </motion.div>

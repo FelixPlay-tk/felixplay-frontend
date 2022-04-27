@@ -14,7 +14,7 @@ const RowItem = ({ item }) => {
                 <div
                     onMouseEnter={() => setShowInfo(true)}
                     onMouseLeave={() => setShowInfo(false)}
-                    className="relative rounded-lg overflow-hidden mx-1 lg:mx-2"
+                    className="relative rounded-lg overflow-hidden mx-1 lg:mx-2 bg-gradient-to-tr from-purple-600 to-pink-500 "
                 >
                     <Image
                         src={item.poster}
@@ -22,8 +22,8 @@ const RowItem = ({ item }) => {
                         layout="responsive"
                         height={330}
                         width={220}
-                        className={`bg-gray-900 cursor-pointer transition duration-200 
-                        ${showInfo && !isMobile && "scale-125 opacity-50"}`}
+                        className={`cursor-pointer transition duration-300 
+                        ${showInfo && !isMobile && "scale-90 blur"}`}
                     />
                     {!isMobile && (
                         <AnimatePresence>
@@ -36,12 +36,17 @@ const RowItem = ({ item }) => {
                                         type: "just",
                                         duration: 0.3,
                                     }}
-                                    className="bg-gradient-to-t from-gray-900 via-gray-900 absolute right-0 left-0 bottom-0"
+                                    className="bg-gradient-to-t  from-pink-600 to-transparent absolute right-0 left-0 bottom-0 "
                                 >
-                                    <div className="mt-2 pb-2 xl:mt-[10%] px-2 space-y-2">
-                                        <h1 className="font-bold text-xs md:text-sm lg:text-base capitalize truncate">
-                                            {item.title}
-                                        </h1>
+                                    <div className="mt-2 pb-4 xl:mt-[10%] px-2 space-y-2  text-left text-white">
+                                        <div
+                                            className="tooltip"
+                                            data-tip={item.title.toUpperCase()}
+                                        >
+                                            <h1 className="font-bold text-xs md:text-sm lg:text-base capitalize truncate">
+                                                {item.title}
+                                            </h1>
+                                        </div>
 
                                         <p className="text-xs line-clamp-3">
                                             {item.details
