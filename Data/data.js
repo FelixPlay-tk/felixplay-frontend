@@ -45,3 +45,206 @@ export const NavData = [
         ],
     },
 ];
+
+export const items = [
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+    {
+        banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+        contentType: "movie",
+        poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
+        releaseDate: "2022-02-17T18:30:00.000Z",
+        title: "uncharted (2022)",
+        _id: "62682d56e103597b88259c3f",
+        details:
+            "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
+    },
+];

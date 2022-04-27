@@ -1,24 +1,32 @@
-import Banner from "../../components/Banner/Banner";
-import { useState, useEffect } from "react";
-import useSWR from "swr";
+import Banner from "../../components/Slider/Banner/Banner";
+import RowSlider from "../../components/Slider/Row/RowSlider";
 
-const Movies = () => {
-    const { data, error } = useSWR(
-        `${process.env.NEXT_PUBLIC_API_URL}/movies/featured`,
-        (url) => fetch(url).then((r) => r.json())
-    );
-
+const Movies = ({ movieBanner, movieRows }) => {
     return (
         <>
-            <section className="">
-                {data && data.length > 0 ? (
-                    <Banner items={data} />
-                ) : (
-                    <div className="pt-[56%] w-full lg:h-[650px] lg:pt-0 overflow-hidden bg-gray-900 animate-pulse"></div>
-                )}
+            <section className="w-full to-pink-600">
+                {movieBanner && <Banner items={movieBanner} />}
+            </section>
+
+            <section className="space-y-5 mt-5 m-2 lg:m-4">
+                {movieRows?.map((row) => (
+                    <RowSlider key={row.id} row={row} />
+                ))}
             </section>
         </>
     );
 };
 
 export default Movies;
+
+export async function getStaticProps(context) {
+    const response = await fetch(`${process.env.SSR_URL}/movies`);
+    const movies = await response.json();
+
+    return {
+        props: {
+            movieBanner: movies?.movieBanner?.items,
+            movieRows: movies?.movieRows,
+        },
+    };
+}

@@ -20,6 +20,7 @@ const BannerItem = ({ item }) => {
                         objectPosition="top right"
                         width={1280}
                         height={720}
+                        priority
                     />
 
                     <div className="bottom-0 hidden lg:block absolute z-10 left-0 top-0 w-2/4 bg-gradient-to-r from-black to-transparent" />
@@ -36,7 +37,7 @@ const BannerItem = ({ item }) => {
                                 {item.categories.map((c, i) => (
                                     <span className="mx-0.5 capitalize" key={i}>
                                         {c}
-                                        {item.categories.length > i + 1 && ","}
+                                        {item.categories.length > i + 1 && " •"}
                                     </span>
                                 ))}
                             </span>

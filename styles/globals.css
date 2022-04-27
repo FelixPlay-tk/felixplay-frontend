@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply selection:bg-pink-500 selection:text-white bg-black text-white;
+        @apply selection:bg-pink-500 selection:text-white bg-[#000208] text-white;
     }
 }
 

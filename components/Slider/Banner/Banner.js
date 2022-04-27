@@ -1,6 +1,6 @@
 import Slider from "react-slick";
-import SliderNextArrow from "../Slider/SliderNextArrow";
-import SliderPrevArrow from "../Slider/SliderPrevArrow";
+import SliderNextArrow from "../SliderNextArrow";
+import SliderPrevArrow from "../SliderPrevArrow";
 import BannerItem from "./BannerItem";
 
 const Banner = ({ items }) => {

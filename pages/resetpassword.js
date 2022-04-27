@@ -84,6 +84,7 @@ const Resetpassword = ({ JWT_TOKEN }) => {
                 <title>Reset Password - FelixPlay</title>
                 <link rel="icon" href="/favicon.png" />
             </Head>
+
             <form
                 className="max-w-md w-9/12 mx-auto pt-[5vh] lg:pt-[15vh] flex flex-col items-center justify-center"
                 onSubmit={submitHandler}
@@ -130,10 +131,7 @@ export async function getServerSideProps(context) {
     }
 
     try {
-        const verifyToken = jwt.verify(
-            token,
-            "651812b26925caed3993cd98369553beb8ce0e050ceb2ebd02ab055e46c30ede"
-        );
+        const verifyToken = jwt.verify(token, "forgetpassword");
 
         if (verifyToken) {
             return {
