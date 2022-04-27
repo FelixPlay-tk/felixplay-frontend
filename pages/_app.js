@@ -1,9 +1,10 @@
 import { Router } from "next/router";
 import NProgress from "nprogress";
+import AuthProvider from "../context/authContext";
 import Layout from "../components/Hoc/Layout";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
-import AuthProvider from "../context/authContext";
+import "../styles/banner.css";
 
 NProgress.configure({ showSpinner: false });
 
