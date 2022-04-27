@@ -1,4 +1,7 @@
 import Head from "next/head";
+import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Home() {
     return (

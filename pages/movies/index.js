@@ -1,19 +1,12 @@
 import Banner from "../../components/Banner/Banner";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
 
 const Movies = () => {
-    const [data, setData] = useState([]);
-
-    const fetchData = () => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies/featured`)
-            .then((res) => res.json())
-            .then((data) => setData(data))
-            .catch((e) => console.log(e.message));
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const { data, error } = useSWR(
+        `${process.env.NEXT_PUBLIC_API_URL}/movies/featured`,
+        (url) => fetch(url).then((r) => r.json())
+    );
 
     return (
         <>
