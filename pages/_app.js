@@ -5,6 +5,7 @@ import Layout from "../components/Hoc/Layout";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
 import "../styles/banner.css";
+import axios from "axios";
 
 NProgress.configure({ showSpinner: false });
 
@@ -18,6 +19,8 @@ Router.events.on("routeChangeComplete", () => {
 Router.events.on("routeChangeError", () => {
     NProgress.done();
 });
+
+axios.defaults.withCredentials = true;
 
 function MyApp({ Component, pageProps }) {
     return (

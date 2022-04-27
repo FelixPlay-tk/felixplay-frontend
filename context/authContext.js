@@ -54,6 +54,7 @@ export default function AuthProvider({ children }) {
     };
     const logout = () => {
         window.localStorage.removeItem("authToken");
+
         setUser({
             isLoggedIn: false,
             authLoading: false,
