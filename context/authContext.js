@@ -1,5 +1,7 @@
 import axios from "axios";
+import Router from "next/router";
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const authContext = createContext({
     isLoggedIn: false,
@@ -52,17 +54,25 @@ export default function AuthProvider({ children }) {
         window.localStorage.setItem("authToken", token);
         setAuthToken(token);
     };
-    const logout = () => {
-        window.localStorage.removeItem("authToken");
 
-        setUser({
-            isLoggedIn: false,
-            authLoading: false,
-            fullName: null,
-            email: null,
-            authToken: null,
-        });
-        setAuthToken(null);
+    const logout = () => {
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
+            .then((res) => {
+                window.localStorage.removeItem("authToken");
+
+                setUser({
+                    isLoggedIn: false,
+                    authLoading: false,
+                    fullName: null,
+                    email: null,
+                    authToken: null,
+                });
+                setAuthToken(null);
+                Router.push("/login");
+                toast.success(res.data.message);
+            })
+            .catch((e) => toast.error("Can't Logout!"));
     };
 
     return (
