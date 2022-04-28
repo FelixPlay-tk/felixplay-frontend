@@ -5,3 +5,11 @@ const Details = () => {
 };
 
 export default Details;
+
+export async function getServerSideProps(ctx) {
+    return {
+        props: {
+            name: "new",
+        },
+    };
+}

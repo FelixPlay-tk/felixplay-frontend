@@ -12,11 +12,11 @@ import axios from "axios";
 import Verification from "../components/Form/Verification";
 
 const SignUp = () => {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [firstName, setFirstName] = useState("rhythm");
+    const [lastName, setLastName] = useState("saha");
+    const [email, setEmail] = useState("rs.2001.saha@gmail.com");
+    const [password, setPassword] = useState("123456");
+    const [confirmPassword, setConfirmPassword] = useState("123456");
 
     const [firstNameError, setFirstNameError] = useState(null);
     const [lastNameError, setLastNameError] = useState(null);
@@ -108,25 +108,25 @@ const SignUp = () => {
         if (!formValidate()) return;
         toast.dismiss();
 
-        try {
-            setIsLoading(true);
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
-                {
-                    firstname: firstName,
-                    lastname: lastName,
-                    email: email,
-                    password: password,
-                    confirmPassword: confirmPassword,
-                }
-            );
-            setVerifyMode(true);
-            setIsLoading(false);
-        } catch (error) {
-            setIsLoading(false);
-            if (error.response) return toast.error(error.response.data.message);
-            return toast.error(error.message);
-        }
+        setIsLoading(true);
+        axios
+            .post(`api/auth/signup`, {
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword,
+            })
+            .then((response) => {
+                setVerifyMode(true);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setIsLoading(false);
+                if (error.response)
+                    return toast.error(error.response.data.message);
+                return toast.error(error.message);
+            });
     };
 
     useEffect(() => {
