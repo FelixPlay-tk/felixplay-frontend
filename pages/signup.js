@@ -101,6 +101,7 @@ const SignUp = () => {
 
         return isValid;
     };
+
     const signUpHandler = async (e) => {
         e.preventDefault();
 

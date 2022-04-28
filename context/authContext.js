@@ -28,7 +28,7 @@ export default function AuthProvider({ children }) {
         if (!token) return setUser((prev) => ({ ...prev, authLoading: false }));
 
         axios
-            .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/authorize`, {
+            .post(`/api/auth/authorize`, {
                 JWT_TOKEN: token,
             })
             .then((response) => {
@@ -56,23 +56,15 @@ export default function AuthProvider({ children }) {
     };
 
     const logout = () => {
-        axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
-            .then((res) => {
-                window.localStorage.removeItem("authToken");
-
-                setUser({
-                    isLoggedIn: false,
-                    authLoading: false,
-                    fullName: null,
-                    email: null,
-                    authToken: null,
-                });
-                setAuthToken(null);
-                Router.push("/login");
-                toast.success(res.data.message);
-            })
-            .catch((e) => toast.error("Can't Logout!"));
+        window.localStorage.removeItem("authToken");
+        setUser({
+            isLoggedIn: false,
+            authLoading: false,
+            fullName: null,
+            email: null,
+            authToken: null,
+        });
+        setAuthToken(null);
     };
 
     return (

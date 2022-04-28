@@ -1,9 +1,9 @@
 import { connect, connection } from "mongoose";
-import crypto from "crypto";
 import userModel from "../../../models/userModel";
 import { isEmail, equals } from "validator";
+import { sendVerificationLink } from "../../../config/mail";
 
-export default async function signup(req, res) {
+export default async function signUp(req, res) {
     if (req.method === "POST") {
         const { firstname, lastname, email, password, confirmPassword } =
             req.body;
@@ -52,6 +52,10 @@ export default async function signup(req, res) {
 
             connection.close();
 
+            sendVerificationLink(saveUser.email, saveUser.OTP)
+                .then((result) => console.log(result))
+                .catch((err) => console.log(err.message));
+
             return res.status(201).json({
                 message:
                     "We have sent an One Time Passcode to verify your account",
@@ -62,6 +66,6 @@ export default async function signup(req, res) {
                 .json({ message: "Oops! Something went wrong" });
         }
     } else {
-        res.redirect("/404");
+        res.status(404).send("method not allowed");
     }
 }

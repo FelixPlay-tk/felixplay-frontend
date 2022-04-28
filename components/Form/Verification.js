@@ -17,6 +17,7 @@ const Verification = ({ email }) => {
         if (otpError) setOtpError(false);
         setOtp(otp);
     };
+
     const verifyHandler = async (e) => {
         e.preventDefault();
         if (isLoading) return;
@@ -33,13 +34,10 @@ const Verification = ({ email }) => {
 
         try {
             setIsLoading(true);
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/verify`,
-                {
-                    email: email,
-                    otp: otp,
-                }
-            );
+            const response = await axios.post(`api/auth/verifyemail`, {
+                email: email,
+                otp: otp,
+            });
             setOtpError(false);
             setVerified(true);
             setIsLoading(false);

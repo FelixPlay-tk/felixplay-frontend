@@ -23,10 +23,9 @@ function ResendCodeButton({ email }) {
 
         try {
             setIsLoading(true);
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/resendotp`,
-                { email: email }
-            );
+            const response = await axios.post(`api/auth/resendotp`, {
+                email: email,
+            });
 
             setIsLoading(false);
             console.log(response);

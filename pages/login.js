@@ -68,13 +68,11 @@ const Login = () => {
 
         try {
             setIsLoading(true);
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-                {
-                    email: email,
-                    password: password,
-                }
-            );
+
+            const response = await axios.post(`/api/auth/login`, {
+                email: email,
+                password: password,
+            });
             setIsLoading(false);
 
             login(response.data.JWT_TOKEN);
