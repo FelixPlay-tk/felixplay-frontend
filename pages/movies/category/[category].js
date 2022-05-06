@@ -1,32 +1,50 @@
 import React from "react";
+import CategoryList from "../../../components/CategoryList";
 
-const Category = ({ category }) => {
-    return <div>{/* {category} */}</div>;
+const Category = ({ category, data }) => {
+    return (
+        <CategoryList
+            categoryItems={data}
+            categoryName={`${category} Movies`}
+        />
+    );
 };
 
 export default Category;
 
-// export async function getStaticProps(context) {
-//     return {
-//         props: {
-//             category: context.params.category,
-//         },
-//     };
-// }
+export async function getStaticProps(context) {
+    try {
+        const res = await fetch(
+            `${process.env.SSR_URL}/movies/language/${context.params.language}`
+        );
+        const data = await res.json();
 
-// export async function getStaticPaths() {
-//     const response = await fetch(`${process.env.SSR_URL}/categories/movies`);
-//     const categories = await response.json();
+        return {
+            props: {
+                category: context.params.category,
+                data,
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+                category: context.params.category,
+                data,
+            },
+        };
+    }
+}
 
-//     console.log(categories);
+export async function getStaticPaths() {
+    const response = await fetch(`${process.env.SSR_URL}/categories/movies`);
+    const categories = await response.json();
 
-//     // { params: { category: "comedy" } }
-//     const paths = categories.map(({ name }) => ({
-//         params: { category: name },
-//     }));
+    const paths = categories.map(({ name }) => ({
+        params: { category: name },
+    }));
 
-//     return {
-//         paths,
-//         fallback: "blocking",
-//     };
-// }
+    return {
+        paths,
+        fallback: "blocking",
+    };
+}

@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply selection:bg-pink-500 selection:text-white bg-[#000208] text-white;
-    }
+  body {
+    @apply selection:bg-pink-500 selection:text-white bg-[#000208] text-white;
+  }
 }
 
 @layer components {
-    .sidebar-nav {
-        @apply text-white cursor-pointer h-12 px-5 flex items-center border-b border-gray-800 bg-transparent;
-    }
+  .sidebar-nav {
+    @apply text-white cursor-pointer h-12 px-5 flex items-center border-b border-gray-800 bg-transparent;
+  }
 }
 
 @layer utilities {
-    * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-tap-highlight-color: transparent;
-    }
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    *::-webkit-scrollbar {
-        display: none;
-    }
+  *::-webkit-scrollbar {
+    display: none;
+  }
 
-    #nprogress .bar {
-        background: rgb(147, 51, 234);
-        background: linear-gradient(
-            90deg,
-            rgba(147, 51, 234, 1) 0%,
-            rgba(219, 39, 119, 1) 100%
-        );
-    }
+  #nprogress .bar {
+    background: rgb(147, 51, 234);
+    background: linear-gradient(
+      90deg,
+      rgba(147, 51, 234, 1) 0%,
+      rgba(219, 39, 119, 1) 100%
+    );
+  }
 
-    .body-minimum-height {
-        min-height: calc(100vh - 5rem - 14rem);
-    }
+  .body-minimum-height {
+    min-height: calc(100vh - 5rem);
+  }
 }

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 const DropDownMenu = ({ link, name, children }) => {
@@ -9,7 +8,7 @@ const DropDownMenu = ({ link, name, children }) => {
             onMouseEnter={() => setDropDownOpen(true)}
             onMouseLeave={() => setDropDownOpen(false)}
         >
-            <Link href={link}>{name}</Link>
+            <span className="cursor-pointer">{name}</span>
             <AnimatePresence>
                 {dropDownOpen && (
                     <motion.div
