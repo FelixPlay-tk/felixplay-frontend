@@ -16,6 +16,7 @@ const nextConfig = {
             "world-wire.com",
             "images.moviebuff.com",
             "assets.thehansindia.com",
+            "m.media-amazon.com",
         ],
     },
 };
