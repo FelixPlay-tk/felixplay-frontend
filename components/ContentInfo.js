@@ -1,28 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { ShareIcon } from "@heroicons/react/outline";
+
 const ContentInfo = () => {
     return (
-        <section className="max-w-7xl mx-auto w-11/12 py-10">
-            <section className="grid lg:grid-cols-6 gap-10 lg:gap-14">
+        <section className="max-w-5xl mx-auto w-11/12 py-10">
+            <section className="grid lg:grid-cols-7 gap-10 lg:gap-14">
                 <div className="lg:col-span-2 w-full flex justify-center items-start">
                     <img
                         src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg"
                         alt=""
-                        className="object-contain h-96 lg:h-auto rounded-2xl"
+                        className="object-contain h-96 lg:h-auto rounded-2xl select-none"
                     />
                 </div>
 
-                <section className="lg:col-span-4 ml-auto self-start px-4 space-y-6">
-                    <div className="space-y-4">
+                <section className="lg:col-span-5 ml-auto self-start px-4 space-y-6">
+                    <div>
                         <h1 className="text-xl md:text-4xl font-bold leading-tight">
                             Doctor Strange in the Multiverse of Madness
                         </h1>
 
-                        <div className="flex items-center justify-start gap-2 text-xl font-semibold text-gray-500">
-                            <p className="">English</p>•<p>2h 05m</p>
+                        <div className="mt-2 flex items-center justify-start flex-wrap gap-2 text-xl font-semibold text-gray-500">
+                            <p className="">English •</p>
+                            <p>2h 05m</p>
                         </div>
 
-                        <div className="flex gap-2 items-center flex-wrap cursor-default">
+                        <div className="mt-4 flex gap-2 items-center flex-wrap cursor-default">
                             <span className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4">
                                 Action
                             </span>
@@ -37,13 +40,24 @@ const ContentInfo = () => {
                             </span>
                         </div>
 
-                        <p className="md:text-xl text-gray-400">
+                        <p className="mt-8 md:text-xl text-gray-400 ">
                             Dr. Stephen Strange casts a forbidden spell that
                             opens the doorway to the multiverse, including
                             alternate versions of himself, whose threat to
                             humanity is too great for the combined forces of
                             Strange, Wong, and Wanda Maximoff.
                         </p>
+
+                        <p className="font-semibold italic text-gray-600 my-2">
+                            Released on : 6 May, 2022
+                        </p>
+                    </div>
+
+                    <div>
+                        <button className="bg-gradient-to-r from-purple-600 to-pink-600 w-48 px-2 py-2 rounded-lg flex items-center justify-center gap-2">
+                            <ShareIcon className="h-5" />
+                            <span>Share</span>
+                        </button>
                     </div>
                 </section>
             </section>

@@ -9,7 +9,7 @@ const RowItem = ({ item }) => {
 
     return (
         <Link href={`/${item.contentType + "s"}/details/${item._id}`} passHref>
-            <a className="rounded-lg overflow-hidden">
+            <a className="rounded-lg overflow-hidden block">
                 <div
                     onMouseEnter={() => setShowInfo(true)}
                     onMouseLeave={() => setShowInfo(false)}
@@ -35,17 +35,15 @@ const RowItem = ({ item }) => {
                                         type: "just",
                                         duration: 0.3,
                                     }}
-                                    className="bg-gray-900 backdrop-blur bg-opacity-30 absolute right-0 left-0 bottom-0 "
+                                    className="absolute right-0 left-0 bottom-0 w-full bg-gray-900 bg-opacity-30 backdrop-blur rounded-b-lg"
                                 >
-                                    <div className="mt-2 pb-4 xl:mt-[10%] px-2 space-y-2  text-left text-white">
-                                        <div>
-                                            <h1
-                                                className="font-bold text-xs md:text-sm lg:text-base capitalize truncate"
-                                                title={item.title?.toUpperCase()}
-                                            >
-                                                {item.title}
-                                            </h1>
-                                        </div>
+                                    <div className="mt-2 pb-4 xl:mt-[10%] px-2 space-y-1 text-left text-white">
+                                        <h1
+                                            className="font-bold text-xs md:text-sm lg:text-base capitalize truncate"
+                                            title={item.title?.toUpperCase()}
+                                        >
+                                            {item.title}
+                                        </h1>
 
                                         <p className="text-xs line-clamp-3">
                                             {item.details
