@@ -33,7 +33,7 @@ const Details = () => {
     }, [isLoggedIn]);
 
     return (
-        <div className="bg-[url('https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg')] bg-no-repeat bg-fixed bg-cover">
+        <div className="bg-[url('https://www.themoviedb.org/t/p/original/u3B2YKUjWABcxXZ6Nm9h10hLUbh.jpg')] bg-no-repeat bg-fixed bg-cover">
             <Head>
                 <title>Doctor Strange in the Multiverse of Madness</title>
             </Head>

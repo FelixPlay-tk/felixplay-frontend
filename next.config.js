@@ -17,6 +17,7 @@ const nextConfig = {
             "images.moviebuff.com",
             "assets.thehansindia.com",
             "m.media-amazon.com",
+            "res.cloudinary.com",
         ],
     },
 };

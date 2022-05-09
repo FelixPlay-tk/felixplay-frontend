@@ -18,6 +18,7 @@ const RowItem = ({ item }) => {
                     <Image
                         src={item.poster}
                         alt={item.title}
+                        objectFit="cover"
                         layout="responsive"
                         height={330}
                         width={220}

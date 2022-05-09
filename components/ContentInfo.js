@@ -8,7 +8,7 @@ const ContentInfo = () => {
             <section className="grid lg:grid-cols-7 gap-10 lg:gap-14">
                 <div className="lg:col-span-2 w-full flex justify-center items-start">
                     <img
-                        src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg"
+                        src="https://www.themoviedb.org/t/p/w220_and_h330_face/u3B2YKUjWABcxXZ6Nm9h10hLUbh.jpg"
                         alt=""
                         className="object-contain h-96 lg:h-auto rounded-2xl select-none"
                     />
@@ -20,7 +20,7 @@ const ContentInfo = () => {
                             Doctor Strange in the Multiverse of Madness
                         </h1>
 
-                        <div className="mt-2 flex items-center justify-start flex-wrap gap-2 text-xl font-semibold text-gray-500">
+                        <div className="mt-1 flex items-center justify-start flex-wrap gap-2 text-xl font-semibold text-gray-500">
                             <p className="">English •</p>
                             <p>2h 05m</p>
                         </div>
@@ -40,7 +40,7 @@ const ContentInfo = () => {
                             </span>
                         </div>
 
-                        <p className="mt-8 md:text-xl text-gray-400 ">
+                        <p className="mt-4 md:text-xl text-gray-400 ">
                             Dr. Stephen Strange casts a forbidden spell that
                             opens the doorway to the multiverse, including
                             alternate versions of himself, whose threat to
