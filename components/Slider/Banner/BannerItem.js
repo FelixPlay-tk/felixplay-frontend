@@ -3,7 +3,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const BannerItem = ({ item }) => {
-    console.log(item);
     return (
         <Link href={`/${item.contentType + "s"}/details/${item._id}`} passHref>
             <motion.div

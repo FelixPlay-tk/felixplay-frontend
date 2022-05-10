@@ -20,7 +20,7 @@ Router.events.on("routeChangeError", () => {
     NProgress.done();
 });
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function MyApp({ Component, pageProps }) {
     return (
