@@ -15,7 +15,7 @@ export default Category;
 export async function getStaticProps(context) {
     try {
         const res = await fetch(
-            `${process.env.SSR_URL}/movies/language/${context.params.language}`
+            `${process.env.SSR_URL}/movies/category/${context.params.category}`
         );
         const data = await res.json();
 
