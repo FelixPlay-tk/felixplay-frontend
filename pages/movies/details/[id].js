@@ -24,14 +24,18 @@ const Details = ({
 }) => {
     const [downloadLinks, setDownloadLinks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { authLoading, isLoggedIn } = useAuthCtx();
+    const { authLoading, isLoggedIn, authToken } = useAuthCtx();
 
     const router = useRouter();
 
     useEffect(() => {
         if (!isLoggedIn) return;
         axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}/movies/links/${_id}`)
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/movies/links/${_id}`, {
+                headers: {
+                    authorization: `Bearer ${authToken}`,
+                },
+            })
             .then((res) => {
                 if (res.statusText === "OK") {
                     console.log(res.data);
@@ -39,8 +43,11 @@ const Details = ({
                     setIsLoading(false);
                 }
             })
-            .catch((e) => console.log(e));
-    }, [isLoggedIn, _id]);
+            .catch((e) => {
+                setIsLoading(false);
+                console.log(e.response.data?.message || e.message);
+            });
+    }, [isLoggedIn, _id, authToken]);
 
     return (
         <div
