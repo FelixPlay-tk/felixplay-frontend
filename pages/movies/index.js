@@ -3,6 +3,7 @@ import Banner from "../../components/Slider/Banner/Banner";
 import RowSlider from "../../components/Slider/Row/RowSlider";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Movies = ({ movieBanner, movieRows }) => {
     return (
@@ -50,20 +51,18 @@ export default Movies;
 
 export async function getStaticProps(context) {
     try {
-        const res = await fetch(`${process.env.SSR_URL}/movies`);
+        const res = await fetch(`${process.env.SSR_URL}/movies/featured`);
         const data = await res.json();
 
         return {
             props: {
-                movieBanner: data.movieBanner?.items,
-                movieRows: data.movieRows,
+                movieBanner: data,
             },
         };
     } catch (error) {
         return {
             props: {
                 movieBanner: [],
-                movieRows: [],
             },
         };
     }
