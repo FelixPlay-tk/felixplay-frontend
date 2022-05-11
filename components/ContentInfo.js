@@ -2,27 +2,44 @@
 
 import { ShareIcon } from "@heroicons/react/outline";
 
-const ContentInfo = () => {
+const ContentInfo = ({
+    _id,
+    contentType,
+    title,
+    details,
+    language,
+    poster,
+    banner,
+    categories,
+    runtime,
+    releaseDate,
+    region,
+}) => {
     return (
         <section className="max-w-5xl mx-auto w-11/12 py-10">
             <section className="grid lg:grid-cols-7 gap-10 lg:gap-14">
                 <div className="lg:col-span-2 w-full flex justify-center items-start">
                     <img
-                        src="https://www.themoviedb.org/t/p/w220_and_h330_face/u3B2YKUjWABcxXZ6Nm9h10hLUbh.jpg"
-                        alt=""
-                        className="object-contain h-96 lg:h-auto rounded-2xl select-none"
+                        src={poster}
+                        alt={title}
+                        className="object-contain h-96 lg:h-auto rounded-2xl select-none bg-gray-900"
                     />
                 </div>
 
                 <section className="lg:col-span-5 ml-auto self-start px-4 space-y-6">
                     <div>
-                        <h1 className="text-xl md:text-4xl font-bold leading-tight">
-                            Doctor Strange in the Multiverse of Madness
+                        <h1 className="text-xl md:text-4xl font-bold leading-tight capitalize">
+                            {title}
                         </h1>
 
                         <div className="mt-1 flex items-center justify-start flex-wrap gap-2 text-xl font-semibold text-gray-500">
-                            <p className="">English •</p>
-                            <p>2h 05m</p>
+                            <p className="capitalize">{language[0]}</p>
+                            <span>•</span>
+                            <p>{runtime}</p>
+                            <span>•</span>
+                            <p className="uppercase">
+                                {new Date(releaseDate).getFullYear()} ({region})
+                            </p>
                         </div>
 
                         <div className="mt-4 flex gap-2 items-center flex-wrap cursor-default">
@@ -40,16 +57,8 @@ const ContentInfo = () => {
                             </span>
                         </div>
 
-                        <p className="mt-4 md:text-xl text-gray-400 ">
-                            Dr. Stephen Strange casts a forbidden spell that
-                            opens the doorway to the multiverse, including
-                            alternate versions of himself, whose threat to
-                            humanity is too great for the combined forces of
-                            Strange, Wong, and Wanda Maximoff.
-                        </p>
-
-                        <p className="font-semibold italic text-gray-600 my-2">
-                            Released on : 6 May, 2022
+                        <p className="mt-4 md:text-xl text-gray-400">
+                            {details.charAt(0).toUpperCase() + details.slice(1)}
                         </p>
                     </div>
 

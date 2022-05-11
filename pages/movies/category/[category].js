@@ -1,52 +1,58 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContentCard from "../../../components/ContentCard";
+import InfiniteScroll from "react-infinite-scroller";
+import ContentCardSkaleton from "../../../components/ContentCardSkaleton";
 
-const Category = ({ category, data }) => {
-    const [items, setItems] = useState(data);
+const Category = ({ category }) => {
+    const [items, setItems] = useState([]);
+    const [hasNext, setHasNext] = useState(true);
 
-    useEffect(() => {}, []);
+    const fetchData = async (page) => {
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/movies/category/${category}?page=${page}`
+            );
+            const data = await res.json();
+
+            setHasNext(data.hasNext || false);
+            setItems([...items, ...data.items]);
+        } catch (error) {
+            console.log(error.message);
+            return;
+        }
+    };
 
     return (
-        <div className="px-4">
-            <div className="mt-2 lg:mt-5 w-[95%] mx-auto">
+        <>
+            <div className="mt-2 lg:mt-5 w-[95%] mx-auto px-4">
                 <h1 className="text-md lg:text-lg font-semibold tracking-wide uppercase">
                     {category} Movies
                 </h1>
             </div>
-            {!!items?.length && (
-                <div className="mx-auto my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 w-[95%] ">
-                    {data.map((t) => (
-                        <ContentCard item={t} key={t._id} />
-                    ))}
-                </div>
-            )}
-        </div>
+
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={fetchData}
+                hasMore={hasNext}
+                loader={<ContentCardSkaleton key={0} />}
+                className="mx-auto my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 w-[95%] px-4"
+            >
+                {!!items?.length &&
+                    items.map((t) => <ContentCard item={t} key={t._id} />)}
+            </InfiniteScroll>
+        </>
     );
 };
 
 export default Category;
 
 export async function getStaticProps(context) {
-    try {
-        const res = await fetch(
-            `${process.env.SSR_URL}/movies/category/${context.params.category}`
-        );
-        const data = await res.json();
-
-        return {
-            props: {
-                category: context.params.category,
-                data,
-            },
-        };
-    } catch (error) {
-        return {
-            props: {
-                category: context.params.category,
-                data: [],
-            },
-        };
-    }
+    return {
+        props: {
+            key: context.params.category,
+            category: context.params.category,
+        },
+    };
 }
 
 export async function getStaticPaths() {
@@ -59,6 +65,6 @@ export async function getStaticPaths() {
 
     return {
         paths,
-        fallback: "blocking",
+        fallback: false,
     };
 }
