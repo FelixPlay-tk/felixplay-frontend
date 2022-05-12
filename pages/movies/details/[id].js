@@ -135,6 +135,7 @@ export async function getStaticProps(context) {
                 details,
                 key: details._id,
             },
+            revalidate: 600,
         };
     } catch (error) {
         return {
@@ -144,8 +145,13 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+    const response = await fetch(`${process.env.SSR_URL}/movies/all`);
+    const data = await response.json();
+
+    const paths = data.map(({ _id }) => ({ params: { id: _id } }));
+
     return {
-        paths: [],
-        fallback: "blocking",
+        paths: paths,
+        fallback: false,
     };
 }

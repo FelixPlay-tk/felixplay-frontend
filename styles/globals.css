@@ -34,6 +34,6 @@
     }
 
     .body-minimum-height {
-        min-height: calc(100vh - 5rem);
+        min-height: calc(100vh - 5rem - 14rem);
     }
 }

@@ -24,7 +24,7 @@ const Category = ({ category }) => {
 
     return (
         <>
-            <div className="mt-2 lg:mt-5 w-[95%] mx-auto px-4">
+            <div className="py-2 lg:py-5 w-[95%] mx-auto px-4">
                 <h1 className="text-md lg:text-lg font-semibold tracking-wide uppercase">
                     {category} Movies
                 </h1>

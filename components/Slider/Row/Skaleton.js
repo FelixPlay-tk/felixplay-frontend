@@ -38,12 +38,12 @@ function Skaleton() {
         ],
     };
     return (
-        <div className="lg:mx-2">
+        <div className="lg:m-2">
             <div className="pt-5"></div>
             <Slider {...settings}>
                 {items.map((itm, idx) => (
                     <div className="p-1 lg:p-2" key={idx}>
-                        <div className="bg-gray-900 pb-[75%] pt-[75%] animate-pulse rounded-lg mx-1 lg:mx-2"></div>
+                        <div className="bg-gray-900 pb-[75%] pt-[75%] animate-pulse rounded-lg"></div>
                     </div>
                 ))}
             </Slider>
