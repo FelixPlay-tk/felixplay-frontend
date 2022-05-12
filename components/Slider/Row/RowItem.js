@@ -9,7 +9,7 @@ const RowItem = ({ item }) => {
 
     return (
         <Link href={`/${item.contentType + "s"}/details/${item._id}`} passHref>
-            <a className="rounded-lg overflow-hidden block">
+            <a className="block w-full overflow-hidden">
                 <div
                     onMouseEnter={() => setShowInfo(true)}
                     onMouseLeave={() => setShowInfo(false)}
@@ -25,6 +25,7 @@ const RowItem = ({ item }) => {
                         className={`cursor-pointer transition duration-300 
                         ${showInfo && !isMobile && "scale-110"}`}
                     />
+
                     {!isMobile && (
                         <AnimatePresence>
                             {showInfo && (
@@ -58,6 +59,11 @@ const RowItem = ({ item }) => {
                         </AnimatePresence>
                     )}
                 </div>
+                {isMobile && (
+                    <p className="mx-2 capitalize text-xs sm:text-sm lg:text-base mt-1 text-gray-400 lg:font-normal ">
+                        {item.title}
+                    </p>
+                )}
             </a>
         </Link>
     );

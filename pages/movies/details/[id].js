@@ -38,14 +38,12 @@ const Details = ({
             })
             .then((res) => {
                 if (res.statusText === "OK") {
-                    console.log(res.data);
                     setDownloadLinks(res.data?.downloadLinks || []);
                     setIsLoading(false);
                 }
             })
             .catch((e) => {
                 setIsLoading(false);
-                console.log(e.response.data?.message || e.message);
             });
     }, [isLoggedIn, _id, authToken]);
 

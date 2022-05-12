@@ -10,14 +10,13 @@ const Shows = () => {
     const fetchData = async (page) => {
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/shows/platform/a?page=${page}`
+                `${process.env.NEXT_PUBLIC_API_URL}/shows/all?page=${page}`
             );
             const data = await res.json();
 
             setHasNext(data.hasNext || false);
             setItems([...items, ...data.items]);
         } catch (error) {
-            console.log(error.message);
             return;
         }
     };

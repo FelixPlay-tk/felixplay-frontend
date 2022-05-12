@@ -3,21 +3,20 @@ import ContentCard from "../../../components/ContentCard";
 import InfiniteScroll from "react-infinite-scroller";
 import ContentCardSkaleton from "../../../components/ContentCardSkaleton";
 
-const Category = ({ category }) => {
+const Platform = ({ platform }) => {
     const [items, setItems] = useState([]);
     const [hasNext, setHasNext] = useState(true);
 
     const fetchData = async (page) => {
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/movies/category/${category}?page=${page}`
+                `${process.env.NEXT_PUBLIC_API_URL}/shows/platform/${platform}?page=${page}`
             );
             const data = await res.json();
 
             setHasNext(data.hasNext || false);
             setItems([...items, ...data.items]);
         } catch (error) {
-            console.log(error.message);
             return;
         }
     };
@@ -26,7 +25,7 @@ const Category = ({ category }) => {
         <>
             <div className="py-2 lg:py-5 w-[95%] mx-auto px-4">
                 <h1 className="text-md lg:text-lg font-semibold tracking-wide uppercase">
-                    {category} Movies
+                    {platform} Shows
                 </h1>
             </div>
 
@@ -44,27 +43,28 @@ const Category = ({ category }) => {
     );
 };
 
-export default Category;
+export default Platform;
 
 export async function getStaticProps(context) {
     return {
         props: {
-            key: context.params.category,
-            category: context.params.category,
+            key: context.params.platform,
+            platform: context.params.platform,
         },
+        revalidate: 86400,
     };
 }
 
 export async function getStaticPaths() {
     const response = await fetch(`${process.env.SSR_URL}/categories/shows`);
-    const categories = await response.json();
+    const platforms = await response.json();
 
-    const paths = categories.map(({ name }) => ({
-        params: { category: name },
+    const paths = platforms.map(({ name }) => ({
+        params: { platform: name },
     }));
 
     return {
-        paths,
+        paths: paths,
         fallback: false,
     };
 }

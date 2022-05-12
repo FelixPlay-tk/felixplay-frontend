@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuthCtx } from "../context/authContext";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import WithAuth from "../components/Hoc/WithAuth";

@@ -22,8 +22,14 @@ const CategoryItem = ({ item }) => {
                     width={327}
                     className={`bg-gray-900 cursor-pointer ${
                         !isMobile && showPlayButton && "opacity-50 scale-125"
-                    } transition duration-200  `}
+                    } transition duration-200`}
                 />
+
+                {item.contentType && (
+                    <p className="capitalize font-light text-xs sm:text-sm lg:text-base mt-1 text-gray-400 lg:font-normal">
+                        {item.title}
+                    </p>
+                )}
 
                 {!isMobile && (
                     <AnimatePresence>

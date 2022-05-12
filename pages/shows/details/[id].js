@@ -1,5 +1,6 @@
 import { DownloadIcon, LockClosedIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import ContentInfo from "../../../components/ContentInfo";
 import Spinner from "../../../components/UI/Spinner";
 import { useAuthCtx } from "../../../context/authContext";
@@ -17,10 +18,33 @@ const Details = ({
         platform,
         releaseDate,
         region,
-        episodes,
     },
 }) => {
-    const { authLoading, isLoggedIn } = useAuthCtx();
+    const [isLoading, setIsLoading] = useState(true);
+    const [episodes, setEpisodes] = useState([]);
+    const { authLoading, isLoggedIn, authToken } = useAuthCtx();
+
+    useEffect(() => {
+        if (!isLoggedIn) return;
+        axios
+            .get(
+                `${process.env.NEXT_PUBLIC_API_URL}/shows/episodelinks/${_id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${authToken}`,
+                    },
+                }
+            )
+            .then((res) => {
+                if (res.statusText === "OK") {
+                    setEpisodes(res.data?.episodes || []);
+                    setIsLoading(false);
+                }
+            })
+            .catch((e) => {
+                setIsLoading(false);
+            });
+    }, [isLoggedIn, _id, authToken]);
 
     return (
         <div
@@ -49,11 +73,12 @@ const Details = ({
                     </div>
 
                     <div className="pt-10 pb-20">
-                        {authLoading && !isLoggedIn && (
-                            <div className="flex items-center justify-center">
-                                <Spinner className="animate-spin h-10 text-purple-500" />
-                            </div>
-                        )}
+                        {(authLoading && !isLoggedIn) ||
+                            (isLoading && isLoggedIn && (
+                                <div className="flex flex-col items-center justify-center">
+                                    <Spinner className="animate-spin h-10 text-purple-500" />
+                                </div>
+                            ))}
 
                         {!authLoading && !isLoggedIn && (
                             <div className="flex justify-center items-center">
@@ -66,37 +91,30 @@ const Details = ({
 
                         {!authLoading && isLoggedIn && (
                             <div className="w-full flex flex-wrap justify-center gap-4">
-                                {Array.from({ length: 20 }).map(
-                                    (episode, index) => (
-                                        <div
-                                            className="w-52 flex flex-col gap-6 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-md p-4"
-                                            key={index}
-                                        >
-                                            <p className="font-bold tracking-wider text-center">
-                                                {episode.episode}
-                                                {/* {episode.title} */}
-                                            </p>
+                                {episodes?.map((episode, index) => (
+                                    <div
+                                        className="w-52 flex flex-col gap-4 bg-white  bg-opacity-5 border border-pink-600 rounded-md p-4"
+                                        key={index}
+                                    >
+                                        <p className="font-bold tracking-wider text-center">
+                                            {episode.episode}
+                                        </p>
 
-                                            <div className="flex flex-col items-center justify-center gap-2">
-                                                {
-                                                    // episode.downloadLinks.map
-                                                    Array.from({
-                                                        length: 2,
-                                                    }).map((link, index) => (
-                                                        <button
-                                                            key={index}
-                                                            className="uppercase flex items-center justify-center text-pink-600 rounded-md font-semibold w-28 py-1 bg-white"
-                                                        >
-                                                            <DownloadIcon className="h-5" />
-                                                            {/* {link.resolution} */}
-                                                            1080p
-                                                        </button>
-                                                    ))
-                                                }
-                                            </div>
+                                        <div className="flex flex-col items-center justify-center gap-2">
+                                            {episode.downloadLinks?.map(
+                                                (link, index) => (
+                                                    <button
+                                                        key={index}
+                                                        className="uppercase flex items-center justify-center text-pink-600 rounded-md font-semibold w-28 py-1 bg-white"
+                                                    >
+                                                        <DownloadIcon className="h-5" />
+                                                        {link.resolution}
+                                                    </button>
+                                                )
+                                            )}
                                         </div>
-                                    )
-                                )}
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </div>
@@ -120,7 +138,7 @@ export async function getStaticProps(context) {
                 details,
                 key: details._id,
             },
-            revalidate: 600,
+            revalidate: 86400,
         };
     } catch (error) {
         return {
@@ -130,10 +148,6 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    // const response = await fetch(`${process.env.SSR_URL}/shows/ids`);
-    // const data = await response.json();
-
-    // const paths = data.map(({ _id }) => ({ params: { id: _id } }));
     return {
         paths: [],
         fallback: "blocking",
