@@ -1,29 +1,15 @@
 import { useState } from "react";
 import { XIcon } from "@heroicons/react/outline";
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import ContentCard from "../components/ContentCard";
-
-const item = {
-    title: "uncharted (2022)",
-    contentType: "movie",
-    banner: "https://image.tmdb.org/t/p/w1280_and_h720_bestv2/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
-    poster: "https://www.themoviedb.org/t/p/w220_and_h330_face/sqLowacltbZLoCa4KYye64RvvdQ.jpg",
-    releaseDate: "2022-02-17T18:30:00.000Z",
-    _id: "62682d56e103597b88259c3f",
-    categories: ["comedy", "drama"],
-    language: "hindi",
-    runtime: "2h 30m",
-    details:
-        "a young street-smart, nathan drake and his wisecracking partner victor “sully” sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to nathan’s long-lost brother.",
-};
+import axios from "axios";
+import Spinner from "../components/UI/Spinner";
 
 function Search() {
-    const [searchResult, setSearchResult] = useState([
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    ]);
+    const [input, setInput] = useState("");
+    const [searchResult, setSearchResult] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const router = useRouter();
 
@@ -33,6 +19,24 @@ function Search() {
 
     const searchHandler = (e) => {
         e.preventDefault();
+        if (input.trim().length <= 2) return;
+
+        setLoading(true);
+
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/search?query=${input}`)
+            .then((res) => {
+                if (res.statusText === "OK") {
+                    setSearchResult(res.data || []);
+                    setLoading(false);
+                }
+            })
+            .catch((e) => {
+                setLoading(false);
+                setSearchResult([]);
+                setError(e.response.data.message || e.message);
+                return;
+            });
     };
 
     return (
@@ -45,17 +49,25 @@ function Search() {
                     />
                 </div>
 
-                <form className="py-6 flex justify-center items-center w-10/12 mx-auto">
+                <form
+                    className="py-6 flex justify-center items-center w-10/12 mx-auto"
+                    onSubmit={searchHandler}
+                >
                     <input
                         type="search"
                         placeholder="Search"
                         className="flex-1 min-w-0 bg-gray-900 px-3 h-10 outline-none"
+                        value={input}
+                        onChange={(e) => {
+                            setInput(e.target.value);
+                            setError("");
+                        }}
                     />
 
                     <button
                         type="submit"
+                        disabled={loading || error}
                         className="bg-gradient-to-tr from-pink-600 to-purple-600 h-10 px-3 lg:px-6"
-                        onClick={searchHandler}
                     >
                         Search
                     </button>
@@ -63,14 +75,25 @@ function Search() {
             </div>
 
             <div className="mt-10 w-10/12 mx-auto">
-                <h2 className="my-2 text-lg md:text-xl font-semibold">
-                    Seach Results
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
-                    {searchResult.map((r, i) => (
-                        <ContentCard item={item} key={i} />
-                    ))}
-                </div>
+                {loading && (
+                    <div className="w-full grid place-items-center h-24">
+                        <Spinner className="h-10 w-10 animate-spin text-pink-500" />
+                    </div>
+                )}
+
+                {!loading && error && (
+                    <h2 className="my-2 text-lg md:text-xl font-semibold">
+                        No Result Found for {input}
+                    </h2>
+                )}
+
+                {!!searchResult.length && !loading && !error && (
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
+                        {searchResult.map((item, i) => (
+                            <ContentCard item={item} key={i} />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
