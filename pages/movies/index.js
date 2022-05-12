@@ -17,7 +17,7 @@ const Movies = () => {
             setHasNext(data.hasNext || false);
             setItems([...items, ...data.items]);
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             return;
         }
     };

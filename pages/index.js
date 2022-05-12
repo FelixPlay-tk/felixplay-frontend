@@ -31,7 +31,9 @@ const HomePage = () => {
             .then((res) => {
                 setBannerItems(res.data);
             })
-            .catch((e) => console.error(e.message));
+            .catch((e) => {
+                return;
+            });
     }, []);
 
     return (
