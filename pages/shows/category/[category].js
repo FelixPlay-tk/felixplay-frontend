@@ -56,7 +56,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const response = await fetch(`${process.env.SSR_URL}/categories/movies`);
+    const response = await fetch(`${process.env.SSR_URL}/categories/shows`);
     const categories = await response.json();
 
     const paths = categories.map(({ name }) => ({

@@ -6,35 +6,32 @@ import RowSlider from "../components/Slider/Row/RowSlider";
 import { ChevronDoubleRightIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
 import Skaleton from "../components/Slider/Row/Skaleton";
+import axios from "axios";
 
 const HomePage = () => {
     const [bannerItems, setBannerItems] = useState([]);
     const [rows, setRows] = useState([]);
     const [hasNext, setHasNext] = useState(true);
 
-    const fetchRows = async (page) => {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/browse/rows?page=${page}`
-        );
-        const result = await response.json();
-
-        setRows([...rows, ...result.data]);
-        setHasNext(result.hasNext || false);
+    const fetchRows = (page) => {
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/browse/rows?page=${page}`)
+            .then((res) => {
+                setHasNext(res.data.hasNext || false);
+                setRows([...rows, ...res.data.data]);
+            })
+            .catch((err) => {
+                return;
+            });
     };
 
     useEffect(() => {
-        async function fetchBanner() {
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/browse/featured`
-            );
-            const data = await res.json();
-
-            if (!data) return;
-
-            setBannerItems(data);
-        }
-
-        fetchBanner();
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/browse/featured`)
+            .then((res) => {
+                setBannerItems(res.data);
+            })
+            .catch((e) => console.error(e.message));
     }, []);
 
     return (

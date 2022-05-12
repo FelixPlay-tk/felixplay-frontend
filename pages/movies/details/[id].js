@@ -51,7 +51,7 @@ const Details = ({
 
     return (
         <div
-            className={`bg-no-repeat bg-fixed bg-center bg-cover`}
+            className={`bg-no-repeat bg-fixed bg-center bg-cover body-minimum-height`}
             style={{ backgroundImage: `url('${poster}')` }}
         >
             <Head>
@@ -80,6 +80,13 @@ const Details = ({
                     </div>
 
                     <div className="pt-10 pb-20">
+                        {(authLoading && !isLoggedIn) ||
+                            (isLoading && isLoggedIn && (
+                                <div className="flex flex-col items-center justify-center">
+                                    <Spinner className="animate-spin h-10 text-purple-500" />
+                                </div>
+                            ))}
+
                         {!authLoading && !isLoggedIn && (
                             <div className="flex justify-center items-center">
                                 <div className="bg-pink-600 bg-opacity-10 text-pink-600 border border-pink-600 px-6 py-4 rounded-xl flex justify-between w-full max-w-md">
@@ -88,13 +95,6 @@ const Details = ({
                                 </div>
                             </div>
                         )}
-
-                        {(authLoading && !isLoggedIn) ||
-                            (isLoading && isLoggedIn && (
-                                <div className="flex flex-col items-center justify-center">
-                                    <Spinner className="animate-spin h-10 text-purple-500" />
-                                </div>
-                            ))}
 
                         {!isLoading && !authLoading && isLoggedIn && (
                             <div className="flex flex-col items-center justify-center gap-4">

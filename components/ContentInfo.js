@@ -5,11 +5,11 @@ import { ShareIcon } from "@heroicons/react/outline";
 const ContentInfo = ({
     _id,
     contentType,
+    platform,
     title,
     details,
     language,
     poster,
-    banner,
     categories,
     runtime,
     releaseDate,
@@ -35,7 +35,10 @@ const ContentInfo = ({
                         <div className="mt-1 flex items-center justify-start flex-wrap gap-2 text-xl font-semibold text-gray-500">
                             <p className="capitalize">{language[0]}</p>
                             <span>•</span>
-                            <p>{runtime}</p>
+                            {contentType === "movie" && <p>{runtime}</p>}
+                            {contentType === "show" && (
+                                <p className="capitalize">{platform}</p>
+                            )}
                             <span>•</span>
                             <p className="uppercase">
                                 {new Date(releaseDate).getFullYear()} ({region})
@@ -43,18 +46,14 @@ const ContentInfo = ({
                         </div>
 
                         <div className="mt-4 flex gap-2 items-center flex-wrap cursor-default">
-                            <span className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4">
-                                Action
-                            </span>
-                            <span className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4">
-                                Sci-Fi
-                            </span>
-                            <span className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4">
-                                Adventure
-                            </span>
-                            <span className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4">
-                                Fantasy
-                            </span>
+                            {categories.map((cat, index) => (
+                                <span
+                                    className="bg-gray-800 rounded-full text-gray-400 font-semibold flex justify-center items-center h-8 px-4 capitalize"
+                                    key={index}
+                                >
+                                    {cat}
+                                </span>
+                            ))}
                         </div>
 
                         <p className="mt-4 md:text-xl text-gray-400">

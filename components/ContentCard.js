@@ -8,7 +8,7 @@ import Link from "next/link";
 const CategoryItem = ({ item }) => {
     const [showPlayButton, setShowPlayButton] = useState(false);
     return (
-        <Link href={`/movies/details/${item._id}`} passHref>
+        <Link href={`/${item.contentType}s/details/${item._id}`} passHref>
             <div
                 onMouseEnter={() => setShowPlayButton(true)}
                 onMouseLeave={() => setShowPlayButton(false)}

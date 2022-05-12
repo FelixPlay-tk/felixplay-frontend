@@ -10,7 +10,7 @@ const Shows = () => {
     const fetchData = async (page) => {
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/movies/all?page=${page}`
+                `${process.env.NEXT_PUBLIC_API_URL}/shows/platform/a?page=${page}`
             );
             const data = await res.json();
 
@@ -26,7 +26,7 @@ const Shows = () => {
         <>
             <div className="py-2 lg:py-5 w-[95%] mx-auto px-4">
                 <h1 className="text-md lg:text-lg font-semibold tracking-wide uppercase">
-                    All Movies
+                    All Shows
                 </h1>
             </div>
 
