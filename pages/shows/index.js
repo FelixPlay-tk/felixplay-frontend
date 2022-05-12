@@ -1,70 +1,47 @@
-import { ChevronDoubleRightIcon } from "@heroicons/react/solid";
-import Banner from "../../components/Slider/Banner/Banner";
-import RowSlider from "../../components/Slider/Row/RowSlider";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import ContentCardSkaleton from "../../components/ContentCardSkaleton";
+import ContentCard from "../../components/ContentCard";
+import InfiniteScroll from "react-infinite-scroller";
 
-const Shows = ({ movieBanner, movieRows }) => {
+const Shows = () => {
+    const [items, setItems] = useState([]);
+    const [hasNext, setHasNext] = useState(true);
+
+    const fetchData = async (page) => {
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/movies/all?page=${page}`
+            );
+            const data = await res.json();
+
+            setHasNext(data.hasNext || false);
+            setItems([...items, ...data.items]);
+        } catch (error) {
+            console.log(error.message);
+            return;
+        }
+    };
+
     return (
         <>
-            <section className="w-full to-pink-600">
-                {movieBanner && <Banner items={movieBanner} />}
-            </section>
+            <div className="py-2 lg:py-5 w-[95%] mx-auto px-4">
+                <h1 className="text-md lg:text-lg font-semibold tracking-wide uppercase">
+                    All Movies
+                </h1>
+            </div>
 
-            <section className="mt-8 space-y-4 lg:space-y-6">
-                {movieRows?.map(({ title, id, hasMore, link, items }) => {
-                    if (items.length)
-                        return (
-                            <motion.div
-                                key={id}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 1 }}
-                                className="space-y-2 mx-1 lg:mx-4"
-                            >
-                                <div className="flex items-center justify-between font-semibold mx-2">
-                                    <h2 className="text-lg lg:text-xl font-semibold capitalize">
-                                        {title}
-                                    </h2>
-
-                                    {hasMore && (
-                                        <Link href={link}>
-                                            <a className="flex items-center text-sm lg:text-base text-pink-600 hover:underline">
-                                                <span>See more</span>
-                                                <ChevronDoubleRightIcon className="h-4 lg:h-5" />
-                                            </a>
-                                        </Link>
-                                    )}
-                                </div>
-
-                                <RowSlider key={id} items={items} />
-                            </motion.div>
-                        );
-                })}
-            </section>
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={fetchData}
+                hasMore={hasNext}
+                loader={<ContentCardSkaleton key={0} />}
+                className="mx-auto my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 w-[95%] px-4"
+            >
+                {!!items?.length &&
+                    items.map((t) => <ContentCard item={t} key={t._id} />)}
+            </InfiniteScroll>
         </>
     );
 };
 
 export default Shows;
-
-export async function getStaticProps(context) {
-    try {
-        const res = await fetch(`${process.env.SSR_URL}/movies`);
-        const data = await res.json();
-
-        return {
-            props: {
-                movieBanner: data.movieBanner?.items,
-                movieRows: data.movieRows,
-            },
-        };
-    } catch (error) {
-        return {
-            props: {
-                movieBanner: [],
-                movieRows: [],
-            },
-        };
-    }
-}

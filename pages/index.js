@@ -14,7 +14,7 @@ const HomePage = () => {
 
     const fetchRows = async (page) => {
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/movies/rows?page=${page}`
+            `${process.env.NEXT_PUBLIC_API_URL}/browse/rows?page=${page}`
         );
         const result = await response.json();
 
@@ -25,7 +25,7 @@ const HomePage = () => {
     useEffect(() => {
         async function fetchBanner() {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/movies/featured`
+                `${process.env.NEXT_PUBLIC_API_URL}/browse/featured`
             );
             const data = await res.json();
 

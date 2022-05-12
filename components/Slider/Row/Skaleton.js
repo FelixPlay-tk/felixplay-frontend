@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 
 function Skaleton() {
-    const items = Array.from({ length: 20 });
+    const items = Array.from({ length: 8 });
 
     const settings = {
         dots: false,
