@@ -12,15 +12,19 @@ const HomePage = () => {
     const [bannerItems, setBannerItems] = useState([]);
     const [rows, setRows] = useState([]);
     const [hasNext, setHasNext] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchRows = (page) => {
+        if (rows.length > 0 && isLoading) return;
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/browse/rows?page=${page}`)
             .then((res) => {
+                setIsLoading(false);
                 setHasNext(res.data.hasNext || false);
                 setRows([...rows, ...res.data.data]);
             })
             .catch((err) => {
+                setIsLoading(false);
                 return;
             });
     };
@@ -51,6 +55,7 @@ const HomePage = () => {
                 hasMore={hasNext}
                 loader={<Skaleton key={0} />}
                 className="mt-8 space-y-4 lg:space-y-6"
+                // threshold={100}
             >
                 {rows.map(({ title, id, link, items }) => {
                     if (items.length > 0)
