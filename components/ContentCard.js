@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { isMobile } from "react-device-detect";
@@ -14,15 +15,15 @@ const CategoryItem = ({ item }) => {
                 onMouseLeave={() => setShowPlayButton(false)}
                 className=" h-full w-full rounded-md overflow-hidden relative"
             >
-                <Image
+                <img
                     src={item.banner}
                     alt=""
-                    layout="responsive"
+                    // layout="responsive"
                     height={184}
                     width={327}
                     className={`bg-gray-900 cursor-pointer ${
                         !isMobile && showPlayButton && "opacity-50 scale-125"
-                    } transition duration-200`}
+                    } transition duration-200 object-cover`}
                 />
 
                 {item.contentType && (

@@ -83,6 +83,15 @@ const Sidebar = () => {
                                     item={item}
                                 />
                             ))}
+
+                            <Link href="/dmca">
+                                <a
+                                    onClick={closeSideBar}
+                                    className="sidebar-nav"
+                                >
+                                    DMCA
+                                </a>
+                            </Link>
                         </nav>
 
                         {!authLoading && !isLoggedIn && (

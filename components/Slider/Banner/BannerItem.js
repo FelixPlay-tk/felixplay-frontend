@@ -16,6 +16,7 @@ const BannerItem = ({ item }) => {
                         src={item.banner}
                         alt={item.title}
                         layout="responsive"
+                        className="aspect-video"
                         objectFit="cover"
                         objectPosition="center right"
                         width={1280}

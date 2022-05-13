@@ -37,12 +37,7 @@ const HomePage = () => {
     }, []);
 
     return (
-        <InfiniteScroll
-            pageStart={0}
-            loadMore={fetchRows}
-            hasMore={hasNext}
-            loader={<Skaleton key={0} />}
-        >
+        <div>
             <section className="w-full to-pink-600">
                 {!bannerItems.length > 0 && (
                     <div className="pt-[56%] lg:pt-0 lg:h-[650px] w-full aspect-video  overflow-hidden bg-gray-900 animate-pulse" />
@@ -50,7 +45,13 @@ const HomePage = () => {
                 {bannerItems && <Banner items={bannerItems} />}
             </section>
 
-            <div className="mt-8 space-y-4 lg:space-y-6">
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={fetchRows}
+                hasMore={hasNext}
+                loader={<Skaleton key={0} />}
+                className="mt-8 space-y-4 lg:space-y-6"
+            >
                 {rows.map(({ title, id, link, items }) => {
                     if (items.length > 0)
                         return (
@@ -78,8 +79,8 @@ const HomePage = () => {
                             </motion.div>
                         );
                 })}
-            </div>
-        </InfiniteScroll>
+            </InfiniteScroll>
+        </div>
     );
 };
 

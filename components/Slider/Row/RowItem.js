@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -15,14 +16,14 @@ const RowItem = ({ item }) => {
                     onMouseLeave={() => setShowInfo(false)}
                     className="relative rounded-lg overflow-hidden mx-1 lg:mx-2"
                 >
-                    <Image
+                    <img
                         src={item.poster}
                         alt={item.title}
                         objectFit="cover"
-                        layout="responsive"
+                        // layout="intrinsic"
                         height={330}
                         width={220}
-                        className={`cursor-pointer transition duration-300 
+                        className={`cursor-pointer transition duration-300  object-cover
                         ${showInfo && !isMobile && "scale-110"}`}
                     />
 
