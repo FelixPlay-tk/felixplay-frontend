@@ -37,12 +37,17 @@ const HomePage = ({ banner, HasNext, rowitems }) => {
             loader={<Skaleton key={0} />}
             className="mt-8 space-y-4 lg:space-y-6"
         >
-            <section className="w-full to-pink-600">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="w-full to-pink-600"
+            >
                 {!bannerItems.length > 0 && (
                     <div className="pt-[56%] lg:pt-0 lg:h-[650px] w-full aspect-video  overflow-hidden bg-gray-900 animate-pulse" />
                 )}
                 {bannerItems && <Banner items={bannerItems} />}
-            </section>
+            </motion.div>
 
             <div>
                 {rows.map(({ title, id, link, items }) => {
