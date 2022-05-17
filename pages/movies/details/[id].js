@@ -37,10 +37,9 @@ const Details = ({
                 },
             })
             .then((res) => {
-                if (res.statusText === "OK") {
-                    setDownloadLinks(res.data?.downloadLinks || []);
-                    setIsLoading(false);
-                }
+                setDownloadLinks(res.data?.downloadLinks || []);
+                setIsLoading(false);
+                return;
             })
             .catch((e) => {
                 setIsLoading(false);

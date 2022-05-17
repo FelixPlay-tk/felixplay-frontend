@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 import Skaleton from "../components/Slider/Row/Skaleton";
 import axios from "axios";
 
-const HomePage = () => {
-    const [bannerItems, setBannerItems] = useState([]);
-    const [rows, setRows] = useState([]);
+const HomePage = ({ banner, HasNext, rowitems }) => {
+    const [bannerItems, setBannerItems] = useState([...banner]);
+    const [rows, setRows] = useState([...rowitems]);
     const [hasNext, setHasNext] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchRows = (page) => {
-        if (rows.length > 0 && isLoading) return;
+        if (isLoading) return;
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/browse/rows?page=${page}`)
             .then((res) => {
@@ -29,19 +29,14 @@ const HomePage = () => {
             });
     };
 
-    useEffect(() => {
-        axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}/browse/featured`)
-            .then((res) => {
-                setBannerItems(res.data);
-            })
-            .catch((e) => {
-                return;
-            });
-    }, []);
-
     return (
-        <div>
+        <InfiniteScroll
+            pageStart={1}
+            loadMore={fetchRows}
+            hasMore={hasNext}
+            loader={<Skaleton key={0} />}
+            className="mt-8 space-y-4 lg:space-y-6"
+        >
             <section className="w-full to-pink-600">
                 {!bannerItems.length > 0 && (
                     <div className="pt-[56%] lg:pt-0 lg:h-[650px] w-full aspect-video  overflow-hidden bg-gray-900 animate-pulse" />
@@ -49,14 +44,7 @@ const HomePage = () => {
                 {bannerItems && <Banner items={bannerItems} />}
             </section>
 
-            <InfiniteScroll
-                pageStart={0}
-                loadMore={fetchRows}
-                hasMore={hasNext}
-                loader={<Skaleton key={0} />}
-                className="mt-8 space-y-4 lg:space-y-6"
-                // threshold={100}
-            >
+            <div>
                 {rows.map(({ title, id, link, items }) => {
                     if (items.length > 0)
                         return (
@@ -84,9 +72,44 @@ const HomePage = () => {
                             </motion.div>
                         );
                 })}
-            </InfiniteScroll>
-        </div>
+            </div>
+        </InfiniteScroll>
     );
 };
 
 export default HomePage;
+
+export async function getStaticProps(params) {
+    try {
+        const result = await axios.get(
+            `${process.env.SSR_URL}/browse/featured`
+        );
+        const data = await result.data;
+
+        const rowsRes = await axios.get(
+            `${process.env.SSR_URL}/browse/rows?page=${1}`
+        );
+        const rows = await rowsRes.data;
+
+        // console.log(rows);
+
+        return {
+            props: {
+                banner: data,
+                HasNext: rows.hasNext,
+                rowitems: rows.data,
+            },
+            revalidate: 600,
+        };
+    } catch (error) {
+        console.log(error.message);
+        return {
+            props: {
+                banner: [],
+                HasNext: true,
+                rowitems: [],
+            },
+            revalidate: 600,
+        };
+    }
+}

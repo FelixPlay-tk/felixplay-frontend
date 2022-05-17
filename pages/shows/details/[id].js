@@ -36,10 +36,9 @@ const Details = ({
                 }
             )
             .then((res) => {
-                if (res.statusText === "OK") {
-                    setEpisodes(res.data?.episodes || []);
-                    setIsLoading(false);
-                }
+                setEpisodes(res.data?.episodes || []);
+                setIsLoading(false);
+                return;
             })
             .catch((e) => {
                 setIsLoading(false);
@@ -73,13 +72,6 @@ const Details = ({
                     </div>
 
                     <div className="pt-10 pb-20">
-                        {(authLoading && !isLoggedIn) ||
-                            (isLoading && isLoggedIn && (
-                                <div className="flex flex-col items-center justify-center">
-                                    <Spinner className="animate-spin h-10 text-purple-500" />
-                                </div>
-                            ))}
-
                         {!authLoading && !isLoggedIn && (
                             <div className="flex justify-center items-center">
                                 <div className="bg-pink-600 bg-opacity-10 text-pink-600 border border-pink-600 px-6 py-4 rounded-xl flex justify-between w-full max-w-md">
@@ -88,6 +80,13 @@ const Details = ({
                                 </div>
                             </div>
                         )}
+
+                        {(authLoading && !isLoggedIn) ||
+                            (isLoading && isLoggedIn && (
+                                <div className="flex flex-col items-center justify-center">
+                                    <Spinner className="animate-spin h-10 text-purple-500" />
+                                </div>
+                            ))}
 
                         {!authLoading && isLoggedIn && (
                             <div className="w-full flex flex-wrap justify-center gap-4">
@@ -138,7 +137,7 @@ export async function getStaticProps(context) {
                 details,
                 key: details._id,
             },
-            revalidate: 86400,
+            revalidate: 600,
         };
     } catch (error) {
         return {

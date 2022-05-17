@@ -51,7 +51,7 @@ export async function getStaticProps(context) {
             key: context.params.platform,
             platform: context.params.platform,
         },
-        revalidate: 86400,
+        revalidate: 600,
     };
 }
 

@@ -52,6 +52,7 @@ export async function getStaticProps(context) {
             key: context.params.category,
             category: context.params.category,
         },
+        revalidate: 600,
     };
 }
 

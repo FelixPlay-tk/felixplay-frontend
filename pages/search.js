@@ -26,10 +26,9 @@ function Search() {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/search?query=${input}`)
             .then((res) => {
-                if (res.statusText === "OK") {
-                    setSearchResult(res.data || []);
-                    setLoading(false);
-                }
+                setSearchResult(res.data || []);
+                setLoading(false);
+                return;
             })
             .catch((e) => {
                 setLoading(false);

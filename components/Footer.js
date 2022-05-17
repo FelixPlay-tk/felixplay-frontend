@@ -13,7 +13,7 @@ function Footer() {
                     />
                 </div>
                 <p className="text-gray-500 font-semibold tracking-wide">
-                    Development Build
+                    &copy;Copyright 2020
                 </p>
             </div>
         </footer>
