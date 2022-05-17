@@ -42,10 +42,10 @@ const HomePage = ({ banner, HasNext, rowitems }) => {
                 transition={{ duration: 1 }}
                 className="w-full to-pink-600"
             >
-                {!bannerItems.length > 0 && (
+                {!banner.length > 0 && (
                     <div className="pt-[56%] lg:pt-0 lg:h-[650px] w-full aspect-video  overflow-hidden bg-gray-900 animate-pulse" />
                 )}
-                {bannerItems && <Banner items={banner} />}
+                {banner && <Banner items={banner} />}
             </motion.div>
 
             <div>
