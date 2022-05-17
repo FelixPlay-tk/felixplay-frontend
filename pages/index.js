@@ -9,9 +9,8 @@ import Skaleton from "../components/Slider/Row/Skaleton";
 import axios from "axios";
 
 const HomePage = ({ banner, HasNext, rowitems }) => {
-    const [bannerItems, setBannerItems] = useState([...banner]);
     const [rows, setRows] = useState([...rowitems]);
-    const [hasNext, setHasNext] = useState(true);
+    const [hasNext, setHasNext] = useState(HasNext);
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchRows = (page) => {
@@ -46,7 +45,7 @@ const HomePage = ({ banner, HasNext, rowitems }) => {
                 {!bannerItems.length > 0 && (
                     <div className="pt-[56%] lg:pt-0 lg:h-[650px] w-full aspect-video  overflow-hidden bg-gray-900 animate-pulse" />
                 )}
-                {bannerItems && <Banner items={bannerItems} />}
+                {bannerItems && <Banner items={banner} />}
             </motion.div>
 
             <div>
